@@ -6,7 +6,7 @@ Bacteria[] group;
    size(900, 900);
    background(0);
    frameRate(20);
-   group = new Bacteria[50];
+   group = new Bacteria[100];
    for(int i=0; i < group.length; i++){
      int x = (int)(Math.random() * width);
      int y = (int)(Math.random() * height);
@@ -51,8 +51,15 @@ Bacteria[] group;
   }
   
   void move(){
-    randX = (int)(15 * Math.random() + 5);
-    randY = (int)(15 * Math.random() + 5);
+    if(mouseX <= 450)
+      randX = randX + (int)(10 * Math.random() - 5) - (mouseX - (mouseX - 10));
+    else
+      randX = randX + (int)(10 * Math.random() - 5) + (mouseX - (mouseX - 10));
+    if(mouseY <= 450)
+      randY = randY +  (int)(10 * Math.random() - 5) - (mouseY - (mouseY - 10));
+     else
+       randY = randY +  (int)(10 * Math.random() - 5) + (mouseY - (mouseY - 10));
+    
   }
   
   void changeShade(){
@@ -61,7 +68,7 @@ Bacteria[] group;
   
   void show(){
     fill(red, green, shade);
-    ellipse(x_pos + randX, y_pos + randY, 20, 20);
+    ellipse(x_pos + randX, y_pos + randY, 40, 40);
   }
  }
  
